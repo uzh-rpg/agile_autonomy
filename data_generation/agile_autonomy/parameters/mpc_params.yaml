@@ -1,0 +1,51 @@
+#     rpg_quadrotor_mpc
+#     A model predictive control implementation for quadrotors.
+#     Copyright (C) 2017-2018 Philipp Foehn, 
+#     Robotics and Perception Group, University of Zurich
+#  
+#     Intended to be used with rpg_quadrotor_control and rpg_quadrotor_common.
+#     https://github.com/uzh-rpg/rpg_quadrotor_control
+# 
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+# Cost on states
+Q_pos_xy:     100   # Cost for horizontal positon error
+Q_pos_z:      100   # Cost for vertical position error
+Q_attitude:   200    # Cost for attitude error
+Q_velocity:   10    # Cost for velocity error
+Q_perception: 0     # Cost for reprojection error to camera optical axis (PAMPC)
+
+# Cost on Inputs
+R_thrust:     1.0     # Cost on thrust input
+R_pitchroll:  1.0     # Cost on pitch and roll rate
+R_yaw:        1.0     # Cost on yaw rate
+
+# Exponential scaling: W_i = W * exp(-i/N * cost_scaling).
+# cost_scaling = 0 means no scaling W_i = W.
+state_cost_exponential: 0.0     # Scaling for state costs
+input_cost_exponential: 0.0     # scaling for input costs
+
+# Limits for inputs
+max_bodyrate_xy:    6.0       # ~ pi [rad/s]
+max_bodyrate_z:     2.0         # ~ pi*2/3 [rad/s]
+min_thrust:         5.0       # ~ 20% gravity [N]
+max_thrust:         20.0      # ~ 200% gravity [N]
+
+# Extrinsics for Perception Aware MPC
+p_B_C:      [ 0.0, 0.0, 0.0 ]               # camera in body center [m]
+q_B_C:      [ 0.6427876, 0, 0.7660444, 0 ]  # 45° pitched down
+
+# Print information such as timing to terminal
+print_info:       false

@@ -1,0 +1,37 @@
+log_dir: '/tmp/train_straight_7ms'
+quad_name: 'none'
+odometry_topic: 'ground_truth/odometry'
+rgb_topic: 'agile_autonomy/unity_rgb'
+depth_topic: 'agile_autonomy/sgm_depth'
+use_rgb: False # Use camera images
+use_depth: True # Use depth images
+state_dim: 3 # x,y,z
+out_seq_len: 10 # Number of steps in the future to predict
+predict_state_number: [] # Empty list means will predict all states in out_seq_len. Otherwise it will train only for the single state. Only supported mode is len(predict_state_number) == 1.
+seq_len: 1 # Number of inputs to load in the last second
+poly_coeff: 3 # Equivalent to poly order minus 1
+img_width: 224
+img_height: 224
+future_time: 5.0 # in seconds, how much in the future to track the reference
+modes: 3 # Modes of distribution
+checkpoint:
+  resume_training: False
+  resume_file: ""
+train:
+  max_training_epochs: 150
+  batch_size: 8
+  freeze_backbone: False
+  top_trajectories: 3
+  summary_freq: 400
+  data_save_freq: 15
+  train_dir: "data/train"
+  val_dir: "data/val"
+  log_images: False
+  save_every_n_epochs: 5
+  ref_frame: 'bf'
+  track_global_traj: False
+inputs:
+  position: False
+  attitude: True
+  bodyrates: True
+  velocity_frame: 'bf'

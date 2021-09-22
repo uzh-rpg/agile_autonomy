@@ -1,0 +1,29 @@
+unity:
+  spawn_trees: true
+  spawn_objects: false
+<<<<<<< HEAD
+  perform_sgm: true
+  seed: 826836  # == 0: generate random seed, != 0: use this fixed random seed
+  avg_tree_spacing: 3.0
+  avg_object_spacing: 4.0
+=======
+  perform_sgm: false
+  seed: 102 #826836  # == 0: generate random seed, != 0: use this fixed random seed
+  avg_tree_spacing: 4.0
+  avg_object_spacing: 7.0
+>>>>>>> f5b98dec65a9ed1cd8d690e24b54c3d13febe8ba
+  rand_width: 5.0 # width of the uniform distribution that perturbs the regular spawning grid
+  object_names: ["Cylinder"] # "Cylinder", "Cube",  "Sphere", "narrow_gap"
+  bounding_box: [235.0, 235.0, 7.0] # spawn objects within this bounding box
+  bounding_box_origin: [20.0, 0.0, 0.0] # relative to the quadrotor start position
+  min_object_scale: [0.5, 0.5, 15]   # scale of objects in meters, will sample uniformly between bounds
+  max_object_scale: [0.7, 0.7, 15]   # scale of objects in meters, will sample uniformly between bounds
+  min_object_angles: [-0.0, -0.0, -0.0]  # euler angles in degrees, will sample uniformly between bounds
+  max_object_angles: [0.0, 0.0, 0.0]  # euler angles in degrees, will sample uniformly between bounds
+  pointcloud_resolution: 0.05  # will be used for both above- and below-ground
+camera:
+  fov: 91.0 # horizontal FOV in degrees
+  width: 640
+  height: 480
+  baseline: 0.1
+  pitch_angle_deg: 0.0 # camera pitch angle in degrees

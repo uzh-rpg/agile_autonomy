@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="quad_name" default="hummingbird"/>
+
+    <arg name="mav_name" default="$(arg quad_name)"/>
+    <arg name="model" value="$(find agile_autonomy)/resources/urdf/mav_generic_odometry_sensor_rgb.gazebo"/>
+    <arg name="world_name" default="$(find agile_autonomy)/resources/worlds/controller_learning.world"/>
+
+    <arg name="x_init" default="0"/>
+    <arg name="y_init" default="0"/>
+
+    <arg name="enable_logging" default="false"/>
+    <arg name="enable_ground_truth" default="true"/>
+    <arg name="log_file" default="$(arg mav_name)"/>
+    <arg name="paused" value="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="use_ground_truth" value="true"/>
+    <arg name="custom_models" default="$(find agile_autonomy)/resources"/>
+    <arg name="verbose" default="false"/>
+    <arg name="debug" default="false"/>
+
+    <!-- Basic simulation environment !-->
+    <include file="$(find rpg_rotors_interface)/launch/basics/base_quad_simulation_no_controller.launch">
+        <arg name="quad_name" value="$(arg quad_name)"/>
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="use_ground_truth" value="$(arg use_ground_truth)"/>
+        <arg name="custom_models" value="$(arg custom_models)"/>
+
+        <arg name="mav_name" value="$(arg mav_name)"/>
+        <arg name="model" value="$(arg model)"/>
+        <arg name="enable_logging" value="$(arg enable_logging)"/>
+        <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+        <arg name="log_file" value="$(arg log_file)"/>
+        <arg name="verbose" default="$(arg verbose)"/>
+        <arg name="debug" default="$(arg debug)"/>
+
+        <arg name="x_init" value="$(arg x_init)"/>
+        <arg name="y_init" value="$(arg y_init)"/>
+    </include>
+
+</launch>

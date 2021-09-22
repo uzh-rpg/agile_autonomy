@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="quad_name"/>
+    <arg name="controller"/>
+    <arg name="use_ground_truth"/>
+    <arg name="enable_command_feedthrough"/>
+    <arg name="velocity_estimate_in_world_frame"/>
+
+    <!-- Autopilot -->
+    <include file="$(find fpv_aggressive_trajectories)/launch/simulation/$(arg controller).launch">
+        <arg name="quad_name" value="$(arg quad_name)"/>
+        <arg name="use_ground_truth" value="$(arg use_ground_truth)"/>
+        <arg name="enable_command_feedthrough" value="$(arg enable_command_feedthrough)"/>
+        <arg name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>
+    </include>
+
+</launch>

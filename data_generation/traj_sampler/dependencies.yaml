@@ -1,0 +1,77 @@
+repositories:
+  catkin_boost_python_buildtool:
+    type: git
+    url: git@github.com:ethz-asl/catkin_boost_python_buildtool.git
+    version: master
+  catkin_simple:
+    type: git
+    url: git@github.com:catkin/catkin_simple.git
+    version: master
+  eigen_catkin:
+    type: git
+    url: git@github.com:ethz-asl/eigen_catkin.git
+    version: master
+  eigen_checks:
+    type: git
+    url: git@github.com:ethz-asl/eigen_checks.git
+    version: master
+  gflags_catkin:
+    type: git
+    url: git@github.com:ethz-asl/gflags_catkin.git
+    version: master
+  glog_catkin:
+    type: git
+    url: git@github.com:ethz-asl/glog_catkin.git
+    version: master
+  mav_comm:
+    type: git
+    url: git@github.com:ethz-asl/mav_comm.git
+    version: master
+  minimum_jerk_trajectories:
+    type: git
+    url: git@github.com:uzh-rpg/minimum_jerk_trajectories.git
+    version: master
+  minkindr:
+    type: git
+    url: git@github.com:ethz-asl/minkindr.git
+    version: master
+  minkindr_ros:
+    type: git
+    url: git@github.com:ethz-asl/minkindr_ros.git
+    version: master
+  numpy_eigen:
+    type: git
+    url: git@github.com:ethz-asl/numpy_eigen.git
+    version: master
+  octomap:
+    type: git
+    url: git@github.com:OctoMap/octomap.git
+    version: master
+  octomap_msgs:
+    type: git
+    url: git@github.com:OctoMap/octomap_msgs.git
+    version: master
+  octomap_ros:
+    type: git
+    url: git@github.com:OctoMap/octomap_ros.git
+    version: melodic-devel
+  rotors_simulator:
+    type: git
+    url: git@github.com:ethz-asl/rotors_simulator.git
+    version: master
+  rpg_common:
+    type: git
+    url: git@github.com:uzh-rpg/rpg_common.git
+    version: master
+  rpg_mpc:
+    type: git
+    url: git@github.com:uzh-rpg/rpg_mpc.git
+    version: master
+  rpg_quadrotor_common:
+    type: git
+    url: git@github.com:uzh-rpg/rpg_quadrotor_common.git
+    version: master
+  rpg_quadrotor_control:
+    type: git
+    url: git@github.com:uzh-rpg/rpg_quadrotor_control.git
+    version: dev/elia

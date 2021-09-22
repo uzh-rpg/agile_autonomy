@@ -1,0 +1,37 @@
+general:
+  control_command_delay: 0.02
+  nw_predictions_frame_id: 1  # 0: world, 1: body, 2: gravity-aligned
+  num_traj_viz: 1000  # how many trajectories to visualize
+  translate_reference: true
+  perform_global_planning: false
+<<<<<<< HEAD
+  test_time_velocity: 8.0
+=======
+  test_time_velocity: 7.0
+>>>>>>> f5b98dec65a9ed1cd8d690e24b54c3d13febe8ba
+  test_time_max_z: 10.0
+  test_time_min_z: 0.0
+# which maneuver to execute
+maneuver:
+  idx: -2 # -3: minjerk through narrow gap, -2: fly straight in forest, -1: fly circle in forest, 0: corkscrew, 1: loop
+  n_loops: 3
+  length_straight: 40.0 # only used if idx == -2
+  loop_radius: 6.0   # loopli: 0.4, normal loop: 0.75, large loop: 1.25, circle in forest: 6
+<<<<<<< HEAD
+  maneuver_velocity: 8 # loopli: 0.5, normal loop: 3.5, large loop: 4.0
+=======
+  maneuver_velocity: 7.0 # loopli: 0.5, normal loop: 3.5, large loop: 4.0
+>>>>>>> f5b98dec65a9ed1cd8d690e24b54c3d13febe8ba
+  d_start_center_x: 1.0 # loopli: 1.0, normal loop: 4.0, large loop: 4.0
+  d_start_center_y: -6.0 # loopli: 1.0, normal loop: 4.0, large loop: 4.0
+  d_start_center_z: 0.0 # loopli: 0.0, normal loop: -0.5, large loop: -0.5
+# polynomial trajectory representation
+trajectory:
+  traj_len: 10
+  traj_dt: 0.1
+  continuity_order: 1 # 0: position, 1: velocity, 2: acceleration
+  enable_yawing: true
+# everything about saving data to disk
+data_generation:
+  save_freq: 15.0 # save images & odometry at this frequency
+

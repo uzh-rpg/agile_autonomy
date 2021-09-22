@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="quad_name" default="hummingbird"/>
+
+    <arg name="model" value="$(find agile_autonomy)/resources/urdf/mav_generic_odometry_sensor_rgb.gazebo"/>
+    <arg name="world_name" value="$(find agile_autonomy)/resources/worlds/simple.world"/>
+
+    <arg name="custom_models" value="$(find agile_autonomy)/resources"/>
+    <arg name="custom_plugins" value="$(find agile_autonomy)/../pointcloud_gz_plugin/build"/>
+
+    <arg name="x_init" default="-20"/>
+    <arg name="y_init" default="20"/>
+
+    <arg name="use_mpc" default="true"/>
+    <arg name="enable_logging" default="false"/>
+    <arg name="enable_ground_truth" default="true"/>
+    <arg name="enable_command_feedthrough" default="true"/>
+    <arg name="log_file" default="$(arg quad_name)"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="false"/>
+    <arg name="use_unity" default="true"/>
+    <arg name="use_ground_truth" value="true"/>
+    <arg name="verbose" default="false"/>
+    <arg name="debug" default="false"/>
+
+    <!-- Basic simulation environment -->
+    <include file="$(find rpg_rotors_interface)/launch/basics/base_quad_simulation.launch">
+        <arg name="quad_name" value="$(arg quad_name)"/>
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="use_ground_truth" value="$(arg use_ground_truth)"/>
+        <arg name="use_mpc" value="$(arg use_mpc)"/>
+        <arg name="enable_command_feedthrough" value="$(arg enable_command_feedthrough)"/>
+        <arg name="custom_models" value="$(arg custom_models)"/>
+        <arg name="custom_plugins" value="$(arg custom_plugins)"/>
+
+        <arg name="mav_name" value="$(arg quad_name)"/>
+        <arg name="model" value="$(arg model)"/>
+        <arg name="enable_logging" value="$(arg enable_logging)"/>
+        <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+        <arg name="log_file" value="$(arg log_file)"/>
+        <arg name="verbose" default="$(arg verbose)"/>
+        <arg name="debug" default="$(arg debug)"/>
+
+        <arg name="x_init" value="$(arg x_init)"/>
+        <arg name="y_init" value="$(arg y_init)"/>
+    </include>
+
+    <param name="/$(arg quad_name)/agile_autonomy/general/real_world_exp" value="false"/>
+    <param name="/$(arg quad_name)/agile_autonomy/general/velocity_estimate_in_world_frame" value="false"/>
+    <param name="/$(arg quad_name)/agile_autonomy/general/process_every_nth_odometry" value="20"/>
+    <!-- hacky parameters to change takeoff -->
+    <param name="/hummingbird/autopilot/optitrack_start_height" value="2.0"/>
+    <param name="/hummingbird/autopilot/optitrack_start_land_timeout" value="20.0"/>
+
+    <group ns="$(arg quad_name)">
+        <!-- Trajectory Planning -->
+        <node pkg="agile_autonomy" type="agile_autonomy" name="agile_autonomy" output="screen">
+            <rosparam file="$(find agile_autonomy)/parameters/default.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/flightmare.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
+            <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml"/>
+            <param name="data_dir" value="$(find agile_autonomy)/../data"/>
+            <remap from="completed_global_plan" to="/test_primitive/completed_planning"/>
+        </node>
+    </group>
+
+    <!-- Global Planning -->
+    <include file="$(find mpl_test_node)/launch/ellipsoid_planner_node/global_planning.launch"/>
+
+    <!-- label with 8 parallel threads -->
+    <include file="$(find traj_sampler)/launch/generate_label_8.launch"/>
+
+    <!-- Visualization -->
+    <node pkg="rviz" type="rviz" name="viz_face" args="-d $(find agile_autonomy)/resources/rviz/simulation.rviz"/>
+
+    <!-- Flightmare Standalone -->
+    <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" if="$(arg use_unity)"/>
+
+</launch>

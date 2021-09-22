@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="quad_name"/>
+    <arg name="use_ground_truth"/>
+    <arg name="enable_command_feedthrough"/>
+    <arg name="velocity_estimate_in_world_frame"/>
+
+    <group ns="$(arg quad_name)">
+        <group if="$(arg use_ground_truth)">
+            <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
+                <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml"/>
+                <rosparam file="$(find rpg_mpc)/parameters/default.yaml"/>
+                <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml"/>
+                <param name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>
+                <param name="state_estimate_timeout" value="0.1"/>
+                <param name="control_command_delay" value="0.05"/>
+                <param name="enable_command_feedthrough" value="$(arg enable_command_feedthrough)"/>
+                <remap from="control_command" to="control_command_label"/>
+                <remap from="autopilot/state_estimate" to="odometry_converted_gt"/>
+            </node>
+        </group>
+
+        <group unless="$(arg use_ground_truth)">
+            <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
+                <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml"/>
+                <rosparam file="$(find rpg_mpc)/parameters/default.yaml"/>
+                <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml"/>
+                <param name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>
+                <param name="state_estimate_timeout" value="0.1"/>
+                <param name="control_command_delay" value="0.05"/>
+                <remap from="control_command" to="control_command_label"/>
+                <remap from="autopilot/state_estimate" to="odometry_converted_gt"/>
+            </node>
+        </group>
+    </group>
+
+</launch>

@@ -1,0 +1,36 @@
+<launch>
+    <arg name="quad_name" default="hummingbird"/>
+
+    <group ns="$(arg quad_name)">
+        <!-- Label Generation -->
+        <arg name="data_dir" default="$(find agile_autonomy)/../data"/>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_0" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="4"/>
+            <param name="thread_idx" value="0"/>
+            <rosparam file="$(find traj_sampler)/parameters/mpc_params.yaml"/>
+            <rosparam file="$(find traj_sampler)/parameters/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_1" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="4"/>
+            <param name="thread_idx" value="1"/>
+            <rosparam file="$(find traj_sampler)/parameters/mpc_params.yaml"/>
+            <rosparam file="$(find traj_sampler)/parameters/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_2" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="4"/>
+            <param name="thread_idx" value="2"/>
+            <rosparam file="$(find traj_sampler)/parameters/mpc_params.yaml"/>
+            <rosparam file="$(find traj_sampler)/parameters/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_3" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="4"/>
+            <param name="thread_idx" value="3"/>
+            <rosparam file="$(find traj_sampler)/parameters/mpc_params.yaml"/>
+            <rosparam file="$(find traj_sampler)/parameters/label_generation.yaml"/>
+        </node>
+    </group>
+</launch>

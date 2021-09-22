@@ -1,0 +1,47 @@
+quad_name: 'hawk'
+odometry_topic: 't265/odom/sample'
+rgb_topic: 'd400/color/image_raw'
+depth_topic: 'd400/depth/image_rect_raw'
+#quad_name: 'hummingbird'
+#odometry_topic: 'ground_truth/odometry'
+#rgb_topic: 'agile_autonomy/unity_rgb'
+#depth_topic: 'agile_autonomy/unity_depth'
+log_dir: '/tmp/trash'
+verbose: False
+use_rgb: False # Use camera images
+use_depth: True # Use depth images
+state_dim: 3 # x,y,z
+out_seq_len: 10 # Number of steps in the future to predict
+predict_state_number: [] # Empty list means will predict all states in out_seq_len. Otherwise it will train only for the single state. Only supported mode is len(predict_state_number) == 1.
+future_time: 5.0 # in seconds, how much in the future to track the reference
+seq_len: 1 # History Len
+poly_coeff: 3 # Equivalent to poly order minus 1
+modes: 3 # Modes of gaussian distribution
+traj_repr: "states"
+img_width: 224
+img_height: 224
+ref_frame: "bf"
+checkpoint:
+  resume_training: True
+  #resume_file: "/home/nvidia/wangen_ckpts/5ms/forest/ckpt-53" # 3m/s no attitude, vel_frame 'bf', hack=true, maneuver_vel=3m/s
+  resume_file: "/home/nvidia/7ms/7ms_wangen/ckpt-23" # 3m/s no attitude, vel_frame 'bf', hack=true, maneuver_vel=3m/s
+test_time:
+  max_rollouts: 4
+  test_folder: "data/slow_loop"
+  expert_folder: "../data_generation/data/"
+  fallback_radius_expert: 100000.0 #mt
+  network_frequency: 15.0 #Hz
+  input_update_freq: 15 #Hz
+  execute_nw_predictions: True
+  crashed_thr: 0.15 # at 0.438m the camera can touch the gate --> crash
+  accept_thresh: 0.95 # when ratio btw other and best score is larger than this, other trajectory will be sent as well.
+  spacings: [4] # mt
+  track_global_traj: False
+  perform_inference: True # Completely disable network forward passes
+inputs:
+  position: False
+  attitude: True
+  bodyrates: True
+  velocity_frame: 'bf'
+  pitch_angle: 0
+  hack_velocity_ref: False

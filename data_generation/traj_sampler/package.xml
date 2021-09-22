@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>traj_sampler</name>
+  <version>0.0.0</version>
+  <description>Sampling-Based Receding-Horizon Trajectories for Quadrotors</description>
+
+  <maintainer email="ekaufmann@ifi.uzh.ch">Elia Kaufmann</maintainer>
+
+  <license>GNU GPL</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+
+  <depend>autopilot</depend>
+  <depend>eigen_catkin</depend>
+  <depend>geometry_msgs</depend>
+  <depend>agile_autonomy_utils</depend>
+  <depend>quadrotor_common</depend>
+  <depend>roscpp</depend>
+  <depend>rpg_common</depend>
+  <depend>rpg_mpc</depend>
+  <depend>std_msgs</depend>
+  <depend>trajectory_generation_helper</depend>
+  <depend>trajectory_msgs</depend>
+
+  <export>
+  </export>
+</package>

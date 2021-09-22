@@ -1,0 +1,26 @@
+traj_len: 10
+traj_dt: 0.1
+poly_order: 4
+continuity_order: 1                # 0: position, 1: velocity, 2: acceleration, 3: jerk
+save_n_best: 10
+save_max_cost: 9000.0
+<<<<<<< HEAD
+crash_dist: 0.8
+=======
+crash_dist: 0.5
+>>>>>>> 4f091b4d457243a7a325dab55c37a1c7cc542c44
+crash_penalty: 9999.0
+max_steps_metropolis: 25000
+# drone is approximated as an axis-aligned cuboid
+# for each axis, drone body spans from -drone_dim_[] to drone_dim_[]
+drone_dim_x: 0.25
+drone_dim_y: 0.25
+drone_dim_z: 0.15
+translate_reference: true
+perform_mpc_optimization: true  # if true, trajectories are sampled around MPC solution
+bspline:
+  n_anchors: 3 # sampled B-spline will be controlled by current quad state + n_anchors
+verbose: false
+start_idx: 0
+end_idx: -1
+

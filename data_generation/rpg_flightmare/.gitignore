@@ -1,0 +1,7 @@
+.idea
+cmake-build-debug
+flightmare
+rpg_flightmare
+
+# VS code
+.vscode

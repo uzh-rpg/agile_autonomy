@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>example_vision</name>
+  <version>0.0.1</version>
+  <description>Simulator Example for Computer Vision.</description>
+  <license>TODO</license>
+
+  <maintainer email="song@ifi.uzh.ch">Yunlong Song</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>eigen_catkin</depend>
+  <depend>rpgq_simulator</depend>
+
+</package>
