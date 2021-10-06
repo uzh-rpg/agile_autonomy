@@ -1,4 +1,4 @@
-# Learning Agile Flight in the Wild
+# Learning High-Speed Flight in the Wild
 
 This repo contains the code associated to the paper Learning Agile Flight in the Wild.
 For more information, please check the [project webpage](http://rpg.ifi.uzh.ch/AgileAutonomy.html).
@@ -9,7 +9,7 @@ For more information, please check the [project webpage](http://rpg.ifi.uzh.ch/A
 
 If you use this code in an academic context, please cite the following publication:
 
-Paper: [Learning Agile Flight in the Wild](http://rpg.ifi.uzh.ch/docs/Loquercio21_Science.pdf)
+Paper: [Learning High-Speed Flight in the Wild](http://rpg.ifi.uzh.ch/docs/Loquercio21_Science.pdf)
 
 Video (Narrated): [YouTube](https://youtu.be/m89bNn6RFoQ)
 
@@ -19,7 +19,7 @@ Science Paper: [DOI](https://www.science.org/doi/10.1126/scirobotics.abg5810)
 
 ```
 @inproceedings{Loquercio2021Science,
-  title={Learning Agile Flight in the Wild},
+  title={Learning High-Speed Flight in the Wild},
     author={Loquercio, Antonio and Kaufmann, Elia and Ranftl, Ren{\'e} and M{\"u}ller, Matthias and Koltun, Vladlen and Scaramuzza, Davide},
       booktitle={Science Robotics}, 
       year={2021}, 
