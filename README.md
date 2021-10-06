@@ -3,14 +3,19 @@
 This repo contains the code associated to the paper Learning Agile Flight in the Wild.
 For more information, please check the [project webpage](http://rpg.ifi.uzh.ch/AgileAutonomy.html).
 
-![Cover](planner_learning/img/cover.png)
+![Cover](planner_learning/img/animation_medium.gif)
 
-#### Citing
+#### Paper, Video, and Datasets
 
 If you use this code in an academic context, please cite the following publication:
 
+Paper: [Learning Agile Flight in the Wild](http://rpg.ifi.uzh.ch/docs/Loquercio21_Science.pdf)
 
-Paper: [Learning Agile Flight in the Wild](http://rpg.ifi.uzh.ch/AgileAutonomy.html)
+Video (Narrated): [YouTube](https://youtu.be/m89bNn6RFoQ)
+
+Datasets: [Zenodo](https://zenodo.org/record/5517791#.YV2zkGNfhhE)
+
+Science Paper: [DOI](https://www.science.org/doi/10.1126/scirobotics.abg5810)
 
 ```
 @inproceedings{Loquercio2021Science,
@@ -87,7 +92,7 @@ conda install tensorflow-gpu
 pip install rospkg==1.2.3,pyquaternion,open3d,opencv-python
 ```
 
-Now download the flightmare standalone available at the same location, extract it and put in the [flightrender](https://github.com/antonilo/flightmare_agile_autonomy/tree/main/flightrender) folder.
+Now download the flightmare standalone available at [this link](https://zenodo.org/record/5517791/files/standalone.tar?download=1), extract it and put in the [flightrender](https://github.com/antonilo/flightmare_agile_autonomy/tree/main/flightrender) folder.
 
 
 ## Let's Fly!
@@ -136,7 +141,7 @@ The trained checkpoint can then be used to control a physical platform (if you h
 
 ### Use pre-collected dataset
 
-The first method, requiring the least effort, is to use a dataset that we pre-collected. The dataset can be found at the same location. This dataset was used to train the model we provide and collected at an average speed of 7 m/s. To do this, adapt the file [train\_settings.yaml](planner_learning/config/train_settings.yaml) to point to the train and test folder and run:
+The first method, requiring the least effort, is to use a dataset that we pre-collected. The dataset can be found at [this link](https://zenodo.org/record/5517791/files/agile_autonomy_dataset.tar.xz?download=1). This dataset was used to train the model we provide and collected at an average speed of 7 m/s. To do this, adapt the file [train\_settings.yaml](planner_learning/config/train_settings.yaml) to point to the train and test folder and run:
 
 ```bash
 cd agile_autonomy_ws
@@ -189,7 +194,7 @@ The result should more or less look as the following:
 
 ### Test the Network
 
-To test the network you trained, adapt the [test_settings.yaml](planner_learning/config/test_settings.yaml) with the new checkpoint path. You might consider putting back the flag `perform_global_planning` in [default.yaml](data_generation/agile_autonomy/parameters/default.yaml) to false to make the simulation faster. Then follow the instructions in the above section (Let's Fly!) to test.
+To test the network you trained, adapt the [test\_settings.yaml](planner_learning/config/test_settings.yaml) with the new checkpoint path. You might consider putting back the flag `perform_global_planning` in [default.yaml](data_generation/agile_autonomy/parameters/default.yaml) to false to make the simulation faster. Then follow the instructions in the above section (Let's Fly!) to test.
 
 
 ## Ackowledgements
