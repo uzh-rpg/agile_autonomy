@@ -1,6 +1,6 @@
 # Learning High-Speed Flight in the Wild
 
-This repo contains the code associated to the paper Learning Agile Flight in the Wild.
+This repo contains the code associated with the paper Learning Agile Flight in the Wild.
 For more information, please check the [project webpage](http://rpg.ifi.uzh.ch/AgileAutonomy.html).
 
 ![Cover](planner_learning/img/animation_medium.gif)
@@ -97,9 +97,9 @@ Now download the flightmare standalone available at [this link](https://zenodo.o
 
 ## Let's Fly!
 
-Once you have installed the dependencies, you will be able to fly in simulation with our pre-trained checkpoint. You don't need necessarely need a GPU for execution. Note that if the network can't run at least at 15Hz, you won't be able to fly successfully.
+Once you have installed the dependencies, you will be able to fly in simulation with our pre-trained checkpoint. You don't need necessarily need a GPU for execution. Note that if the network can't run at least at 15Hz, you won't be able to fly successfully.
 
-Lauch the simulation! Open a terminal and type:
+Launch the simulation! Open a terminal and type:
 ```bash
 cd agile_autonomy_ws
 source catkin_aa/devel/setup.bash
