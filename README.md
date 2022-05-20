@@ -89,7 +89,7 @@ roscd planner_learning
 conda create --name tf_24 python=3.7
 conda activate tf_24
 conda install tensorflow-gpu
-pip install rospkg==1.2.3,pyquaternion,open3d,opencv-python
+pip install rospkg==1.2.3 pyquaternion open3d opencv-python
 ```
 
 Now download the flightmare standalone available at [this link](https://zenodo.org/record/5517791/files/standalone.tar?download=1), extract it and put in the [flightrender](https://github.com/antonilo/flightmare_agile_autonomy/tree/main/flightrender) folder.
