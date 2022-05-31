@@ -115,7 +115,7 @@ class MixtureSpaceLoss(Loss):
         alphas = tf.concat(alphas, axis=-1)  # [B,M]
         mode_losses = tf.concat(mode_losses, axis=-1)  # [B,K,M]
         max_idx = tf.argmin(mode_losses, axis=-1)  # [B,K]
-        epsilon = 0.01
+        epsilon = 0.05
         loss_matrix = tf.zeros_like(alphas)
         for k in range(y_true.shape[1]):
             selection_matrix = tf.one_hot(max_idx[:, k], depth=self.modes)
