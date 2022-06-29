@@ -88,7 +88,7 @@ catkin build
 roscd planner_learning
 conda create --name tf_24 python=3.7
 conda activate tf_24
-conda install tensorflow-gpu
+pip install tensorflow-gpu==2.4
 pip install rospkg==1.2.3 pyquaternion open3d opencv-python
 ```
 
