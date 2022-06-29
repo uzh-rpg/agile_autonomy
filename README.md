@@ -195,6 +195,10 @@ The result should more or less look as the following:
 
 To test the network you trained, adapt the [test\_settings.yaml](planner_learning/config/test_settings.yaml) with the new checkpoint path. You might consider putting back the flag `perform_global_planning` in [default.yaml](data_generation/agile_autonomy/parameters/default.yaml) to false to make the simulation faster. Then follow the instructions in the above section (Let's Fly!) to test.
 
+### Real-World Deployment
+
+If you want to use a trained network for navigation on a physical drone, consider using our open-source and open-hardware [flight stack](https://github.com/uzh-rpg/agilicious). 
+
 
 ## Ackowledgements
 
