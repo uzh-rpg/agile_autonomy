@@ -48,14 +48,7 @@ class PlaNet(Network):
                                                  pooling=None)]
             if self.config.freeze_backbone:
                 self.backbone[0].trainable = False
-            else:
-                # Freeze only BN
-                model = self.backbone[0]
-                for layer in model.layers:
-                    if layer.name.endswith('_bn'):
-                        layer.trainable = True
-                    else:
-                        layer.trainable = True
+
             # reduce a bit the size
             self.resize_op = [Conv1D(128, kernel_size=1, strides=1, padding='valid', dilation_rate=1,
                                      use_bias=has_bias)]
